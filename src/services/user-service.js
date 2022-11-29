@@ -10,11 +10,7 @@ export const userService = {
 };
 
 async function signup(user) {
-  try {
-    return httpService.post("auth/signup", user, true);
-  } catch (error) {
-    console.log(error);
-  }
+  return httpService.post("auth/signup", user);
 }
 
 async function login(creds) {
@@ -45,5 +41,6 @@ function getEmptyUser() {
     imgUrl: "",
     packs: [],
     isActivated: false,
+    type: "regular",
   };
 }

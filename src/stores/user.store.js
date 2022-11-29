@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { userService } from "../services/user.service";
+import { userService } from "../services/user-service";
 export const useUserStore = defineStore("user", {
   state: () => {
     return {
@@ -14,7 +14,7 @@ export const useUserStore = defineStore("user", {
         const newUser = await userService.signup(user);
         this.currUser = newUser;
       } catch (error) {
-        console.log(error);
+        throw error.response.data;
       }
     },
     // async login(creds) {

@@ -1,8 +1,10 @@
 import Axios from "axios";
-import router from '@/router';
+import router from "@/router";
 
 const BASE_URL =
-  process.env.NODE_ENV === "production" ? "/api/" : "http://127.0.0.1:3030/api/";
+  process.env.NODE_ENV === "production"
+    ? "/api/"
+    : "http://127.0.0.1:3030/api/";
 
 var axios = Axios.create({
   withCredentials: true,
@@ -34,11 +36,12 @@ async function ajax(endpoint, method = "GET", data = null) {
     });
     return res.data;
   } catch (err) {
-    console.log(
-      `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`,
-      data
-    );
-    console.dir(err);
+    // console.log(
+    //   `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`,
+    //   data
+    // );
+    // console.log(err.response.data);
+    // console.dir(err);
     if (err.response && err.response.status === 401) {
       // Depends on routing startegy - hash or history
       // window.location.assign('/#/login')
